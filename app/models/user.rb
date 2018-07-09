@@ -6,4 +6,11 @@ class User < ApplicationRecord
   validates :email, uniqueness: true
   validates :email, presence: true
   has_secure_password
+
+  def received_comments
+    self.pictures.map do |pic|
+      pic.comments
+    end
+  end
+  
 end

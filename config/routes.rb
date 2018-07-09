@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
   resources :users
-  get '/signup', to: 'users#new'
+  resources :pictures
+  resources :tags
+  post 'users/new', to: 'users#create'
 end

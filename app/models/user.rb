@@ -1,10 +1,8 @@
 class User < ApplicationRecord
   has_many :pictures
   has_many :comments
-  validates :username, presence: true
-  validates :username, uniqueness: true
-  validates :email, uniqueness: true
-  validates :email, presence: true
+  validates :username, presence: true, uniqueness: true
+  validates :email, uniqueness: true, presence: true
   has_secure_password
 
   def received_comments
@@ -12,5 +10,5 @@ class User < ApplicationRecord
       pic.comments
     end
   end
-  
+
 end

@@ -6,8 +6,8 @@ class User < ApplicationRecord
   has_secure_password
 
   def received_comments
-    self.pictures.map do |pic|
-      pic.comments
+    self.pictures.map do |picture|
+      picture.comments
     end
   end
 

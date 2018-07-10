@@ -3,5 +3,14 @@ Rails.application.routes.draw do
   resources :pictures
   resources :tags
   resources :sessions
-  post 'users/new', to: 'users#create'
+
+  get '/signup', to: 'users#new'
+  post '/signup', to: 'users#create'
+
+  post '/pictures/comments', to: 'comments#create'
+
+  get '/signin', to: 'sessions#new'
+  post '/signin', to: 'sessions#create'
+  delete '/signout', to: 'sessions#destroy'
+
 end

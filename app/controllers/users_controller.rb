@@ -6,10 +6,15 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find_by(id: params[:id])
+    @pictures = Picture.all
+    session[:user_id] = @user.id
+    @session = session[:user_id]
+    # render :layout => false
   end
 
   def new
     @user = User.new
+    # render :layout => false
   end
 
   def create

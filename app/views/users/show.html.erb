@@ -1,2 +1,12 @@
-<h3><%= @user.username %></h3>
-<h2> <%= @user.email %></h2>
+<p>Username: <%= @user.username %></p>
+<p>Email: <%= @user.email %></p>
+
+  <% @pictures.each do |picture|  %>
+    <h3 style="padding: 10px;"><%= picture.title %></h3>
+    <img src="<%= picture.image_url %>" alt="<%= picture.title %>" style=" height: 300px; padding:10px;">
+  <% end %>
+
+  <div>
+    <%= button_to('Upload a picture', '/pictures/new', method: :get) %>
+    <%= button_to('Logout', 'sessions#destroy', method: :puts) %>
+  </div><br>

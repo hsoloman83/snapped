@@ -1,0 +1,6 @@
+<h1>Pictures with Tags</h1>
+
+<% @tag.pictures.each do |picture| %>
+  <h3><%= picture.title %></h3>
+  <img src="<%= picture.image_url %>" alt="<%= picture.title %>" style="width: 700px;">
+<% end %>

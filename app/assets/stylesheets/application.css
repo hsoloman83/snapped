@@ -16,3 +16,22 @@
 .top-buffer {
   margin-top:20px;
 }
+
+.bottom-buffer {
+  margin-top:50px;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  background-color: #A8C686;
+}
+
+ul {
+  list-style-type: none;
+}
+
+
+.deco-none {
+    text-decoration:none;
+    color: black;
+}

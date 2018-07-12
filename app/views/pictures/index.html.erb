@@ -1,3 +1,18 @@
+<div id="navbar">
+  <ul id="heads">
+    <li class="header text-center"><% if session[:user_id].nil? %><%= link_to("Home", '/')%></li>
+      <%else%>
+        <li class="header"><%= link_to("Home", user_path(session[:user_id]))%></li>
+      <%end%>
+
+      <% if !session[:user_id].nil? %>
+      	<li class="header"><%= link_to("New photo", 'pictures/new')%></li>
+        <li class="header"><%= link_to "Sign Out", signout_path, method: :delete %></p></li>
+      <%end%>
+  </ul>
+</div>
+
+
 <h1 style="text-align: center;">All Atlanta Scenes</h1>
 
 <div class="container">

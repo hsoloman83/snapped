@@ -1,9 +1,8 @@
 class SessionsController < ApplicationController
 
   def new
-    @users = User.all
-    @user = User.find(params[:username])
-    render :layout => false
+    # @users = User.all
+    # @user = User.find(params[:username])
   end
 
   def create

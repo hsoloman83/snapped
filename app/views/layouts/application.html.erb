@@ -14,13 +14,16 @@
   </head>
 
 <div class="container text-center mx-auto">
+  <div class="row">
+    <div class="col-sm-12">
+      <% if current_user %>
+        <h3 class = "text-center"> <%= "Hi, #{current_user.username}" %></h3>
+        <p><%= link_to "Sign Out", signout_path, method: :delete %></p>
+      <% else %>
+    </div>
+  </div>
 
-  <% if current_user %>
-    <h3 style="text-align: center;"> <%= "Hi, #{current_user.username}" %> </h3>
-    <p><%= link_to "Sign Out", signout_path, method: :delete %></p>
-  <% else %>
-
-  <div class="form-signin">
+  <div class="form-signin top-buffer">
       <%= form_tag signin_path do %>
         <div class="row">
           <div class="col-sm-12">
@@ -31,7 +34,7 @@
       <p>Password <span class="form_control">
         <%= password_field_tag :password%>
       </span></p>
-        <%= submit_tag "Sign In" %> <br>
+        <%= submit_tag "Sign In" %> <br><br>
         <%= link_to "Sign Up", signup_path %>
       <% end %>
     </div><br>
@@ -43,7 +46,7 @@
   <% end %>
 </div>
 
-  <body>
+  <body style="background-color: #9DBFD4; color: #150578;">
     <%= yield %>
   </body>
 

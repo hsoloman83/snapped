@@ -6,7 +6,6 @@ class UsersController < ApplicationController
 
   def show
   	@user = User.find_by(id: params[:id])
-    @pictures = Picture.all
   end
 
   def new

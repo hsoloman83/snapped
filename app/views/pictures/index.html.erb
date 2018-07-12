@@ -1,5 +1,9 @@
 <h1 style="text-align: center;">All Atlanta Scenes</h1>
 
+<div class="container">
 <% @pictures.each do |picture| %>
-  <img src="<%= picture.image_url %>" alt="<%= picture.title %>" style=" height: 300px; padding:10px;">
+  <%= link_to picture_path(picture)  do %>
+    <img src="<%= picture.image_url %>" alt="<%= picture.title %>" style=" height: 300px; padding:10px;">
+  <% end %>
 <% end %>
+</div>

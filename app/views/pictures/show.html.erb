@@ -1,23 +1,30 @@
 <h3><%= @picture.title %></h3>
 <img src="<%= @picture.image_url %>" alt="<%= @picture.title %>" style="width: 500px;">
 
-
-<h3>Comments:</h3>
+<h3>Tags:</h3>
 <ul>
-  <% @comments.each do |comment| %>
-    <li><%= comment.content %></li>
+  <% @tags.each do |tag| %>
+    <li><%= tag.name %></li>
   <% end %>
 </ul>
 
 
+<h3>Comments:</h3>
+<ul>
+  <% @comments.each do |comment| %>
+    <li><%= comment.content %><%= button_to 'x', comment_path(comment), method: 'delete' %></li>
+
+  <% end %>
+</ul>
+
 <h3>Add a Comment:</h3>
 
-<%= form_for Comment.new do |f| %>
+<%= form_for @new_comment do |f| %>
   <%= f.text_area :content %>
+  
+  <%= f.hidden_field :picture_id, :value => @picture.id %>
+  <%= f.hidden_field :user_id, :value => session[:user_id] %>
 
-  <%= f.hidden_field :picture_id, :value => @picture_id %>
-  <%= f.hidden_field :user_id, :value => @user_id %>
-
-  <%= button_to('Add a comment!', 'comment#create', method: post) %>
+  <%= button_to('Add Comment', 'comment#create', method:'post') %>
 
 <% end %>

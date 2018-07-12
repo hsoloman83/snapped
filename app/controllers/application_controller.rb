@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery prepend: true
-  helper_method :logged_in, :current_user, :require_login
+  helper_method :logged_in?, :current_user, :require_login
 
   def require_login
     unless logged_in || session[:user_id]
@@ -11,7 +11,6 @@ class ApplicationController < ActionController::Base
 
   def current_user
     @current_user ||= User.find(session[:user_id]) if session[:user_id]
-    @users = User.all
   end
 
   def logged_in?

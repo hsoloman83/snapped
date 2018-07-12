@@ -1,0 +1,6 @@
+<h3>Edit or Delete your comment</h3>
+
+<%= comment.content %>
+
+<%= button_to 'Edit', edit_comment_path, method: get %>
+<%= button_to 'delete', comment_path(@comment), method: delete %>

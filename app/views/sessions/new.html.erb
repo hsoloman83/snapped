@@ -1,10 +1,12 @@
-<h1>Log in<h1>
+<h3>Welcome to Snapped<h3>
 <%= form_tag("/sessions/new", method: "post") do %>
   <%= label_tag(:username, "Username:") %>
-  <%= text_field_tag(:username) %>
+  <%= text_field_tag(:username) %><br><br>
 
   <%= label_tag(:password, "Password") %>
-  <%= text_field_tag(:password) %>
+  <%= password_field_tag(:password) %>
 
   <%= submit_tag("Log In") %>
 <% end %>
+
+<%= link_to "Sign Up", signup_path %>

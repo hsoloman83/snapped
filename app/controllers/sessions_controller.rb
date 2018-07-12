@@ -1,6 +1,9 @@
 class SessionsController < ApplicationController
 
   def new
+    @users = User.all
+    @user = User.find(params[:username])
+    render :layout => false
   end
 
   def create
@@ -18,6 +21,11 @@ class SessionsController < ApplicationController
   def destroy
     session[:user_id] = nil
     flash[:success] = "Logged Out!"
+    redirect_to new_user_path
+  end
+
+  def destroy_all
+    Session.all.delete
     redirect_to new_user_path
   end
 

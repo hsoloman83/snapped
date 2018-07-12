@@ -1,12 +1,18 @@
-<p>Username: <%= @user.username %></p>
-<p>Email: <%= @user.email %></p>
+<h3>Username: <%= @user.username %></h3>
+<h4>Email: <%= @user.email %></h4>
 
-  <% @pictures.each do |picture|  %>
-    <h3 style="padding: 10px;"><%= picture.title %></h3>
-    <img src="<%= picture.image_url %>" alt="<%= picture.title %>" style=" height: 300px; padding:10px;">
+<div>
+  <%= button_to('Upload Picture', '/pictures/new', method: 'get') %>
+  <%= button_to('Logout', 'sessions#destroy', method: 'puts') %>
+</div><br>
+
+<h3>Your Pictures</h3>
+
+<% if @user.pictures.empty? %>
+  <%= "User doesn't have any pictures" %>
+<% else %>
+  <% @user.pictures.each do |picture|  %>
+    <h3 style="padding: 10px;"><%= link_to picture.title, picture %></h3>
+    <a href="/pictures/<%=picture.id%>"><img src="<%= picture.image_url %>" alt="<%= picture.title %>" style=" height: 300px; padding:10px;"></a>
   <% end %>
-
-  <div>
-    <%= button_to('Upload a picture', '/pictures/new', method: :get) %>
-    <%= button_to('Logout', 'sessions#destroy', method: :puts) %>
-  </div><br>
+<% end %>

@@ -5,10 +5,7 @@ class CommentsController < ApplicationController
 
   def show
     @comment = Comment.find(params[:id])
-  end
-
-  def new
-    @comment = Comment.new
+    @user = User.find(comment[:user_id])
   end
 
   def create
@@ -23,9 +20,32 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to picture_path(@picture)
     else
-      render :new
+      flash[:errors] = "No Comment Entered, Please Try Again"
+      redirect_to picture_path(@picture)
     end
-    
+
+  end
+
+  def edit
+    @comment = Comment.find(params[:id])
+    @user = User.find(comment[:user_id])
+  end
+
+  def update
+    @comment = Comment.find(params[:id])
+    if @comment.update(comment_params)
+      redirect_to @comment
+    else
+      render :edit
+    end
+  end
+
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @picture = Picture.find(@comment.picture_id)
+    @comment.destroy
+    redirect_to @picture
   end
 
   private

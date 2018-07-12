@@ -1,0 +1,8 @@
+<h3>Upload a Picture</h3>
+<%= form_for @picture do |f| %>
+  <%= f.label(:title, "Title") %>
+	<%= f.text_field :title %>
+	<%= f.label(:image_url, "Image URL:") %>
+	<%= f.text_field :image_url %>
+	<%= f.submit %>
+<%end%>

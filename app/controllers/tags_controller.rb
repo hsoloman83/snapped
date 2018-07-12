@@ -4,10 +4,6 @@ class TagsController < ApplicationController
     @tags = Tag.all
   end
 
-  def new
-
-  end
-
   def show
     @tag = Tag.find(params[:id])
   end
@@ -19,6 +15,13 @@ class TagsController < ApplicationController
     else
       render :new
     end
+  end
+
+  def destroy
+    @picture = Picture.find(params[:picture_id])
+    @picture_tag = PictureTag.find_by(picture_id: params[:picture_id], tag_id: params[:tag_id])
+    @picture_tag.delete
+    redirect_to @picture
   end
 
   private
